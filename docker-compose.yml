@@ -1,0 +1,19 @@
+version: '2'
+services:
+  bind:
+    restart: always
+    privileged: true
+    container_name: bind_server
+    image: bind:9.11.0
+    network_mode: host
+    ports:
+    - "53:53"
+    - "53:53/udp"
+    - "10000:10000"
+    volumes:
+    - /etc/localtime:/etc/localtime:ro
+#    - /data/bind:/data/bind
+#    - /data/webmin:/data/webmin
+    environment:
+    - TERM=linux
+    - ROOT_PASSWORD='LookBack123!@#'
